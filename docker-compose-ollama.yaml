@@ -12,7 +12,7 @@ services:
     environment:
       - CHROMADB_URL=http://chromadb:8000
       - DATABASE_URL=file:/app/sqlite/chatollama.sqlite
-    image: 0001coder/chatollama:latest
+    image: registry.cn-hangzhou.aliyuncs.com/rag_web/rag_web:7bb9dc90f23690bf7294ad7586eacea10d16895e8d39fa690f26ab4796aa4310
     ports:
       - "3000:3000"
     restart: always
