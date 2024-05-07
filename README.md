@@ -71,15 +71,24 @@ MILVUS_URL=http://localhost:19530
 
 ### 使用 Docker
 
+构建本地镜像的方法：
+
+1. 写好dockerfile
+2. build 相应文件
+
+```shell
+$ docker build -t jakeallen/rag_web:v2 .
+```
+
 唯一需要的是复制一份 [docker-compose.yaml](./docker-compose.yaml)。请下载它，并执行以下命令以启动 `ChatOllama`：
 
 ```shell
 $ docker compose up
 ```
 
-由于 `ChatOllama` 在 Docker 容器中运行，您需要将 Ollama 服务器设置为 `http://host.docker.internal:11434`，假设您的 Ollama 服务器在本地运行默认端口。
+由于项目 在 Docker 容器中运行，您需要将 Ollama 服务器设置为 `http://host.docker.internal:11434`，假设您的 Ollama 服务器在本地运行默认端口。
 
-如果这是您第一次在 Docker 中启动 `ChatOllama`，请初始化 SQLite 数据库：
+如果这是您第一次在 Docker 中启动，请初始化 SQLite 数据库：
 
 ```shell
 $ docker compose exec chatollama npx prisma migrate dev
@@ -112,10 +121,6 @@ $ docker compose exec ollama ollama pull nomic-embed-text:latest
 ##### 关系数据
 
 关系数据，包括知识库记录及其关联文件，存储在 SQLite 数据库文件中，保存在 `~/.chatollama/chatollama.sqlite`。
-
-#### 代理
-
-我们提供了代理配置功能。对于特定的使用，请点击 [这里](docs/proxy-usage.md)。
 
 1. 安装最新依赖项
     - `pnpm install`
