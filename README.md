@@ -21,53 +21,52 @@ MILVUS_URL=http://localhost:19530
 
 1. 安装 Ollama 服务器
 
-    您需要运行 Ollama 服务器。按照 [Ollama](https://github.com/ollama/ollama) 的安装指南进行安装。默认情况下，它运行在 http://localhost:11434。
-
+   您需要运行 Ollama 服务器。按照 [Ollama](https://github.com/ollama/ollama) 的安装指南进行安装。默认情况下，它运行在 http://localhost:11434。
 2. 安装 Chroma
 
-    请参阅 [https://docs.trychroma.com/getting-started](https://docs.trychroma.com/getting-started) 获取 Chroma 安装指南。
+   请参阅 [https://docs.trychroma.com/getting-started](https://docs.trychroma.com/getting-started) 获取 Chroma 安装指南。
 
-    我们建议在 Docker 容器中运行：
+   我们建议在 Docker 容器中运行：
 
-    ```bash
-    # https://hub.docker.com/r/chromadb/chroma/tags
+   ```bash
+   # https://hub.docker.com/r/chromadb/chroma/tags
 
-    docker pull chromadb/chroma
-    docker run -d -p 8000:8000 chromadb/chroma
-    ```
-    现在，ChromaDB 正在运行于 http://localhost:8000
+   docker pull chromadb/chroma
+   docker run -d -p 8000:8000 chromadb/chroma
+   ```
 
+   现在，ChromaDB 正在运行于 http://localhost:8000
 3. 设置
 
-    现在，我们可以完成必要的设置，以便运行 ChatOllama。
+   现在，我们可以完成必要的设置，以便运行项目。
 
-    3.1 复制 `.env.example` 文件到 `.env` 文件：
+   3.1 复制 `.env.example` 文件到 `.env` 文件：
 
-    ```bash
-    cp .env.example .env
-    ```
+   ```bash
+   cp .env.example .env
+   ```
 
-    3.2 确保安装依赖项：
+   3.2 确保安装依赖项：
 
-    ```bash
-    pnpm install
-    ```
+   ```bash
+   pnpm install
+   ```
 
-    3.3 运行迁移命令以创建数据库表：
+   3.3 运行迁移命令以创建数据库表：
 
-    ```bash
-    pnpm prisma-migrate
-    ```
-
+   ```bash
+   pnpm prisma-migrate
+   ```
 4. 启动开发服务器
 
-    > 确保 __[Ollama Server](#ollama-server)__  服务器和 __[ChromaDB](#install-chromadb-and-startup)__  都正在运行。
+   > 确保 __[Ollama Server](#ollama-server)__  服务器和 __[ChromaDB](#install-chromadb-and-startup)__  都正在运行。
+   >
 
-    启动开发服务器在 `http://localhost:3000`：
+   启动开发服务器在 `http://localhost:3000`：
 
-    ```bash
-    pnpm dev
-    ```
+   ```bash
+   pnpm dev
+   ```
 
 ### 使用 Docker
 
@@ -80,7 +79,7 @@ MILVUS_URL=http://localhost:19530
 $ docker build -t jakeallen/rag_web:v2 .
 ```
 
-唯一需要的是复制一份 [docker-compose.yaml](./docker-compose.yaml)。请下载它，并执行以下命令以启动 `ChatOllama`：
+唯一需要的是复制一份 [docker-compose.yaml](./docker-compose.yaml)。请下载它，并执行以下命令以启动项目：
 
 ```shell
 $ docker compose up
@@ -123,6 +122,6 @@ $ docker compose exec ollama ollama pull nomic-embed-text:latest
 关系数据，包括知识库记录及其关联文件，存储在 SQLite 数据库文件中，保存在 `~/.chatollama/chatollama.sqlite`。
 
 1. 安装最新依赖项
-    - `pnpm install`
+   - `pnpm install`
 2. Prisma 迁移
-    - `pnpm prisma-migrate`
+   - `pnpm prisma-migrate`
